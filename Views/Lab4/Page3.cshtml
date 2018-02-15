@@ -1,0 +1,22 @@
+﻿@{
+    var drinks = ViewData["drinks"] as string[];
+}
+
+<style>
+        .jumbotron {
+        color: white;
+        background-color: purple;
+        border-radius: 25px;
+        padding: 15px;
+    }
+</style>
+
+<div class="jumbotron">
+<h2>@ViewBag.Title</h2>
+    </div>
+
+@for(int i=0; i<5; i++)
+{
+    <ol>@(i+1). @drinks[i]</ol>
+}
+

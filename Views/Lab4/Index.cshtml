@@ -1,0 +1,57 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    System.DateTime date1 = new DateTime();
+    var header = "";
+    var amorpm = "";
+    var regularTimeHour = 0;
+    var minute = DateTime.Now.Minute;
+    var weekDay = DateTime.Now.DayOfWeek;
+    var day = DateTime.Now.Day;
+    var month = DateTime.Now.ToString("MMMM");
+    var year = DateTime.Now.Year;
+
+    if (DateTime.Now.Hour > 12)
+    {
+        if (DateTime.Now.Hour < 18) { header = "Good Afternoon!"; }
+        else { header = "Good Evening!"; }
+        amorpm = "PM";
+        regularTimeHour = DateTime.Now.Hour - 12;
+    }
+    else
+    {
+        if (DateTime.Now.Hour < 6)
+        {
+            header = "Good Evening!";
+        }
+        else
+        {
+            header = "Good Morning";
+        }
+        amorpm = "AM";
+        regularTimeHour = DateTime.Now.Hour;
+    }
+
+
+    DateTime date = DateTime.Today;
+    int daysInYear = DateTime.IsLeapYear(date.Year) ? 366 : 365;
+    int daysLeftInYear = daysInYear - date.DayOfYear; // Result is in range 0-365.
+}
+<style>
+    .jumbotron {
+        color: white;
+        background-color: purple;
+        border-radius: 25px;
+        padding: 15px;
+    }
+</style>
+<div class="jumbotron">
+    <h1>@header</h1>
+</div>
+<h2>The time is @regularTimeHour:@minute @amorpm on @weekDay, @month @day, @year</h2>
+
+<p>There are: @daysLeftInYear days left in the year</p>
+<a href="/Lab4/Page2/0">
+<button type="button" class="btn btn-success">Go To Page 2</button>
+    </a>
